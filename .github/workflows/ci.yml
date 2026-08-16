@@ -1,0 +1,26 @@
+name: quality-gates
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: python -m pip install --upgrade pip setuptools wheel
+      - run: pip install -r requirements-dev.txt
+      - run: pip install -e . --no-deps --no-build-isolation
+      - run: ruff check src tests scripts app.py
+      - run: bandit -q -r src scripts app.py -c pyproject.toml
+      - run: pytest
+      - run: python -m compileall -q src scripts app.py
+      - run: python scripts/bootstrap_demo.py --reset

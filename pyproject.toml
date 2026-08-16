@@ -1,0 +1,56 @@
+[build-system]
+requires = ["setuptools>=75", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "enterprise-complaint-intelligence"
+version = "1.0.0"
+description = "End-to-end validated analytics and RAG capstone platform"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Capstone Project" }]
+dependencies = [
+  "pandas>=2.2,<3",
+  "pydantic>=2.13,<3",
+  "pydantic-settings>=2.14,<3",
+  "SQLAlchemy>=2.0,<3",
+  "PyMySQL[rsa]>=1.2,<2",
+  "weaviate-client>=4.22,<5",
+  "openai>=2.48,<3",
+  "streamlit>=1.60,<2",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=9,<10",
+  "ruff>=0.12,<1",
+  "bandit[toml]>=1.8,<2",
+]
+
+[project.scripts]
+eci = "eci.cli:main"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+exclude = ["data", "powerbi/exports"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["E501"]
+
+[tool.bandit]
+exclude_dirs = ["tests", ".venv"]
+skips = ["B101"]

@@ -1,0 +1,49 @@
+# Secrets and local configuration
+.env
+.env.*.local
+*.pem
+*.key
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+*.egg-info/
+build/
+dist/
+
+# Runtime state
+logs/*.log
+logs/*.log.*
+data/*.db
+data/vector/*.json
+data/processed/*
+data/rejected/*
+powerbi/exports/*
+!data/processed/.gitkeep
+!data/rejected/.gitkeep
+!data/vector/.gitkeep
+!powerbi/exports/.gitkeep
+
+# Uploaded or downloaded raw data
+# The included synthetic demonstration file is explicitly allowed.
+data/raw/*
+!data/raw/complaints_raw.csv
+!data/raw/.gitkeep
+
+# Power BI temporary files
+*.pbit.tmp
+~$*.pbix
+
+# Editors and OS
+.vscode/settings.json
+.idea/
+.DS_Store
+Thumbs.db
+
+.env

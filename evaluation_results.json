@@ -1,0 +1,161 @@
+{
+  "top_k": 5,
+  "cases": 8,
+  "hits": 8,
+  "hit_rate": 1.0,
+  "embedding_model": "local-signed-hash-1024d",
+  "results": [
+    {
+      "question": "What complaints describe merchant refunds that did not post?",
+      "expected_issue": "Refund delay",
+      "hit": true,
+      "retrieved_ids": [
+        "CMP-1021",
+        "CMP-1030",
+        "CMP-1063",
+        "CMP-1070",
+        "CMP-1001"
+      ],
+      "retrieved_issues": [
+        "Disputed transaction",
+        "Disputed transaction",
+        "Disputed transaction",
+        "Disputed transaction",
+        "Refund delay"
+      ]
+    },
+    {
+      "question": "Which customers say a mortgage payment was applied to the wrong month?",
+      "expected_issue": "Payment processing",
+      "hit": true,
+      "retrieved_ids": [
+        "CMP-1026",
+        "CMP-1036",
+        "CMP-1059",
+        "CMP-1066",
+        "CMP-1075"
+      ],
+      "retrieved_issues": [
+        "Payment processing",
+        "Payment processing",
+        "Payment processing",
+        "Payment processing",
+        "Payment allocation"
+      ]
+    },
+    {
+      "question": "What problems involve a lien release or vehicle title arriving late?",
+      "expected_issue": "Title delay",
+      "hit": true,
+      "retrieved_ids": [
+        "CMP-1027",
+        "CMP-1004",
+        "CMP-1029",
+        "CMP-1049",
+        "CMP-1071"
+      ],
+      "retrieved_issues": [
+        "Title delay",
+        "Title delay",
+        "Title delay",
+        "Title delay",
+        "Title delay"
+      ]
+    },
+    {
+      "question": "What complaints describe an account frozen after a mobile deposit?",
+      "expected_issue": "Account access",
+      "hit": true,
+      "retrieved_ids": [
+        "CMP-1046",
+        "CMP-1052",
+        "CMP-1022",
+        "CMP-1025",
+        "CMP-1079"
+      ],
+      "retrieved_issues": [
+        "Account access",
+        "Account access",
+        "Account access",
+        "Account access",
+        "Account access"
+      ]
+    },
+    {
+      "question": "What records involve a fraudulent account returning after an identity theft report?",
+      "expected_issue": "Identity theft",
+      "hit": true,
+      "retrieved_ids": [
+        "CMP-1007",
+        "CMP-1023",
+        "CMP-1006",
+        "CMP-1010",
+        "CMP-1022"
+      ],
+      "retrieved_issues": [
+        "Identity theft",
+        "Identity theft",
+        "Identity theft",
+        "Identity theft",
+        "Account access"
+      ]
+    },
+    {
+      "question": "What complaints describe unexplained escrow payment increases?",
+      "expected_issue": "Escrow",
+      "hit": true,
+      "retrieved_ids": [
+        "CMP-1047",
+        "CMP-1060",
+        "CMP-1019",
+        "CMP-1005",
+        "CMP-1055"
+      ],
+      "retrieved_issues": [
+        "Escrow",
+        "Escrow",
+        "Escrow",
+        "Repossession dispute",
+        "Repossession dispute"
+      ]
+    },
+    {
+      "question": "What complaints say extra principal was applied as future payments?",
+      "expected_issue": "Payment allocation",
+      "hit": true,
+      "retrieved_ids": [
+        "CMP-1075",
+        "CMP-1073",
+        "CMP-1026",
+        "CMP-1036",
+        "CMP-1059"
+      ],
+      "retrieved_issues": [
+        "Payment allocation",
+        "Payment allocation",
+        "Payment processing",
+        "Payment processing",
+        "Payment processing"
+      ]
+    },
+    {
+      "question": "What complaints describe a credit report account that does not belong to the consumer?",
+      "expected_issue": "Incorrect account",
+      "hit": true,
+      "retrieved_ids": [
+        "CMP-1012",
+        "CMP-1041",
+        "CMP-1038",
+        "CMP-1064",
+        "CMP-1078"
+      ],
+      "retrieved_issues": [
+        "Incorrect account",
+        "Incorrect account",
+        "Incorrect account",
+        "Incorrect account",
+        "Incorrect account"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+-r requirements.txt
+pytest==9.0.2
+ruff>=0.12,<1
+bandit[toml]>=1.8,<2

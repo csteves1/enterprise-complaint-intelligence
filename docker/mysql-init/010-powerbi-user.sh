@@ -1,0 +1,14 @@
+#!/bin/sh
+set -eu
+
+if [ -z "${POWERBI_USER:-}" ] || [ -z "${POWERBI_PASSWORD:-}" ]; then
+  echo "POWERBI_USER and POWERBI_PASSWORD are required." >&2
+  exit 1
+fi
+
+mysql --protocol=socket -uroot -p"${MYSQL_ROOT_PASSWORD}" <<EOSQL
+CREATE USER IF NOT EXISTS '${POWERBI_USER}'@'%' IDENTIFIED BY '${POWERBI_PASSWORD}';
+ALTER USER '${POWERBI_USER}'@'%' IDENTIFIED BY '${POWERBI_PASSWORD}';
+GRANT SELECT ON \`${MYSQL_DATABASE}\`.* TO '${POWERBI_USER}'@'%';
+FLUSH PRIVILEGES;
+EOSQL
