@@ -1,6 +1,6 @@
 # Start Here
 
-This project is already populated with a synthetic demonstration dataset and a tested portable database. You can inspect the files immediately, but the best learning experience is to rebuild the system yourself with the commands below.
+This project is already populated with a synthetic demonstration dataset and a tested portable database.
 
 ## What you need for the first run
 
