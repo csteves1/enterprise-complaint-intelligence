@@ -74,7 +74,7 @@ It still performs Pandas cleaning, Pydantic validation, PII masking, customer-ID
 
 ## Move to the complete local enterprise stack
 
-After the portable version makes sense, install and start Docker Desktop. Back up or remove the portable `.env`, then run:
+Install and start Docker Desktop. Back up or remove the portable `.env`, then run:
 
 ```powershell
 .\.venv\Scripts\python.exe scripts\create_env.py --profile docker --force
@@ -108,19 +108,3 @@ This deletes the local Docker database volumes and reloads the synthetic dataset
 The repository contains CSV exports, a least-privilege MySQL view layer, DAX measures, and a dashboard build guide. A native `.pbix` file is not included because it must be authored and verified with Power BI Desktop on Windows.
 
 Begin with `powerbi/README.md` after the dashboard works in Streamlit.
-
-## Recommended code-reading order
-
-1. `scripts/generate_sample_data.py`
-2. `src/eci/cleaning.py`
-3. `src/eci/schemas.py`
-4. `src/eci/security.py`
-5. `src/eci/database.py`
-6. `src/eci/embeddings.py`
-7. `src/eci/vector_store.py`
-8. `src/eci/pipeline.py`
-9. `src/eci/rag.py`
-10. `src/eci/answering.py`
-11. `app.py`
-
-Then use `docs/LEARNING_PATH.md` to make controlled changes and test your understanding.
