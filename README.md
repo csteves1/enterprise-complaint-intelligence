@@ -10,9 +10,8 @@ Traditional business intelligence is good at counting complaints, response times
 - The vector path supports semantic retrieval over unstructured narratives.
 - The RAG layer answers questions only from retrieved evidence and cites complaint IDs.
 
-The one-sentence interview description is:
 
-> A Python enterprise data pipeline uses Pandas and Pydantic to clean and validate mixed-format complaint records, stores the authoritative records in MySQL for Power BI, indexes PII-redacted narratives in Weaviate, and provides source-grounded retrieval and question answering through Streamlit and OpenAI.
+A Python enterprise data pipeline uses Pandas and Pydantic to clean and validate mixed-format complaint records, stores the authoritative records in MySQL for Power BI, indexes PII-redacted narratives in Weaviate, and provides source-grounded retrieval and question answering through Streamlit and OpenAI.
 
 ## Architecture
 
@@ -59,7 +58,7 @@ A stable `complaint_id` connects the SQL record and vector record. MySQL is the 
 | Portable | SQLite | Atomic local JSON index | Local signed feature hashing | Local extractive answer | None |
 | Enterprise local | MySQL 8.4 | Secured Weaviate 1.38 | Local or OpenAI | Local or OpenAI | Generated locally; OpenAI key optional |
 
-The portable profile is not a fake UI. It executes the complete application flow and is designed so a student can inspect every artifact without first solving infrastructure and billing.
+The portable profile is not a fake UI. It executes the complete application flow and lets reviewers run and verify the full pipeline locally without Docker or paid API keys.
 
 ## Implemented controls
 
@@ -202,7 +201,7 @@ WEAVIATE_URL=your_cloud_rest_endpoint
 WEAVIATE_API_KEY=your_cloud_api_key
 ```
 
-Keep `OPENAI_API_KEY` separate. The application sends self-provided vectors to Weaviate, so the Weaviate service does not need the OpenAI credential. Do not paste either key into chat or commit `.env`.
+Keep `OPENAI_API_KEY` separate. The application sends self-provided vectors to Weaviate, so the Weaviate service does not need the OpenAI credential. Never commit .env or expose API keys.
 
 ## Input contract
 
@@ -289,27 +288,10 @@ Start with `powerbi/README.md`. The repository contains:
 - Visual and interaction plan
 - Read-only database account setup
 
-A native `.pbix` is intentionally not fabricated outside Power BI Desktop. Building that final report yourself is also an important PL-300 learning exercise.
+A native `.pbix` is intentionally not fabricated outside Power BI Desktop. Power BI contains the CSV extracts, read-only MySQL views, DAX meausures, and build guide.
 
 ## Tests
 
 The automated tests verify cleaning, validation, PII masking, pseudonym stability, safe querying, idempotent ingestion, SQL persistence, vector retrieval, source citations, and rejection behavior.
 
-The included portable release was exercised end to end before packaging. See `DEMO_RESULTS.md` for the exact run summary.
-
-## Learning plan
-
-Do not read every file passively. Run one controlled experiment at a time:
-
-1. Change a raw date format and rerun.
-2. Add a Pydantic business rule and test its rejection.
-3. Correct a rejected row and watch it enter both stores.
-4. Run the same input twice and inspect idempotence.
-5. Change a narrative and observe an update.
-6. Filter retrieval by state or product.
-7. Switch SQLite to MySQL.
-8. Switch local vectors to Weaviate.
-9. Switch local embeddings to OpenAI.
-10. Build the Power BI report from the same source-of-truth data.
-
-Detailed exercises are in `docs/LEARNING_PATH.md`.
+See `DEMO_RESULTS.md` for the exact run summary.
